@@ -31,38 +31,79 @@ import { useState } from 'react';
     
 //   )
 // }
-const AddButton=(props)=>{
+// const AddButton=(props)=>{
   
-  const onIncrementClick=()=>{
-    props.setCount(props.count + 1);
-  }
-  return (
-    <button onClick={onIncrementClick}>Increment</button>
-  )
-}
-const DecrementButton=(props)=>{
+//   const onIncrementClick=()=>{
+//     props.setCount(props.count + 1);
+//   }
+//   return (
+//     <button onClick={onIncrementClick}>Increment</button>
+//   )
+// }
+// const DecrementButton=(props)=>{
   
-  const onDecrementClick=()=>{
-  props.setCount(props.count - 1);
-  }
+//   const onDecrementClick=()=>{
+//   props.setCount(props.count - 1);
+//   }
     
 
-  return(
-    <button onClick={onDecrementClick}> Decrement</button>
-  )
-}
+//   return(
+//     <button onClick={onDecrementClick}> Decrement</button>
+//   )
+// }
 
 function App() {
-  const[count, setCount]=useState(10);
+  // const[count, setCount]=useState(10);
+   const initial={
+    name:'',
+    email:'',
+    address:'',
+    password:'',
+    phone:''
+   }
+    const [form, setForm]= useState(initial);
 
+    const onNameChange=(event)=>{
+      setForm({...form , name: event.target.value});
+    }
   
+    const onEmailChange=(event)=>{
+      setForm({...form , email: event.target.value});
+    }
 
+    console.log(form);
   return (
     <>
-    
-    <AddButton count={count} setCount={setCount} />
-    <span> the value is {count}</span>
-    <DecrementButton count={count} setCount={setCount}/>
+     <div>
+      <label>Name</label>
+     <input onChange={onNameChange} placeholder='Please Enter Your Name'/>
+     </div>
+
+     <div>
+      <label>Email</label>
+     <input onChange={onEmailChange} placeholder='Please Enter Your email'/>
+     </div>
+
+
+     <div>
+      <label>Address</label>
+     <input  placeholder='Please Enter Your address'/>
+     </div>
+
+
+     <div>
+      <label>Password</label>
+     <input  placeholder='Please Enter Your password'/>
+     </div>
+
+
+     <div>
+      <label>Phone</label>
+     <input  placeholder='Please Enter Your Phone number'/>
+     </div>
+      {/* // <AddButton count={count} setCount={setCount} />
+      // <span> the value is {count}</span>
+      // <DecrementButton count={count} setCount={setCount}/> */}
 
     </>
    
