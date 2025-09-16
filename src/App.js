@@ -1,6 +1,8 @@
 import logo from './logo.svg';
 import './App.css';
-const names="samir";
+import { useState } from 'react';
+// const names="samir";
+
 // const element =<h2> I love Coding </h2>
 // function MyButton(){
 //   return(
@@ -29,36 +31,40 @@ const names="samir";
     
 //   )
 // }
-let count=0;
+const AddButton=(props)=>{
+  
+  const onIncrementClick=()=>{
+    props.setCount(props.count + 1);
+  }
+  return (
+    <button onClick={onIncrementClick}>Increment</button>
+  )
+}
+const DecrementButton=(props)=>{
+  
+  const onDecrementClick=()=>{
+  props.setCount(props.count - 1);
+  }
+    
+
+  return(
+    <button onClick={onDecrementClick}> Decrement</button>
+  )
+}
+
 function App() {
+  const[count, setCount]=useState(10);
 
-  const onincrementclick=()=>{
-    count= count+1;
-    console.log({count})
-
-  }
-  const onsearchchange=(event)=>{
-      console.log(event.target.value);
-  }
+  
 
   return (
     <>
-    <h1> Jsx</h1>
-    <button id='btn' onClick={onincrementclick}>Increment</button>
-    <input onChange={onsearchchange} placeholder='search.........'/>
+    
+    <AddButton count={count} setCount={setCount} />
+    <span> the value is {count}</span>
+    <DecrementButton count={count} setCount={setCount}/>
 
     </>
-    
-      // <div className="App">
-      // {/* <h1>Hello My name is {names}</h1>
-      // {/* {element} */}
-      // {/* <MyButton /> */}
-      // {/* <Buttons /> */}
-      // {/* <div>
-      //   <Search />
-      // </div> */} 
-      // <Header />
-    // </div>
    
     
   );
